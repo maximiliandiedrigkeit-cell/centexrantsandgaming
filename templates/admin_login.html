@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="auth-page">
+
+<div class="auth-box admin-box">
+
+    <div class="admin-badge">
+        ADMIN
+    </div>
+
+    <h1>Admin Login</h1>
+
+    <p>
+        Nur der Administrator kann diesen Bereich öffnen.
+    </p>
+
+    {% if error %}
+        <div class="error-box">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+
+        <label>Admin-Passwort</label>
+
+        <input
+            type="password"
+            name="password"
+            required
+        >
+
+        <button class="primary-btn full-btn">
+            Admin anmelden
+        </button>
+
+    </form>
+
+    <a href="/" class="back-link">
+        ← Zur Website
+    </a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anmelden</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="auth-page">
+
+<div class="auth-box">
+
+    <div class="brand-icon">C</div>
+
+    <h1>Anmelden</h1>
+
+    <p>
+        Melde dich bei deinem Konto an.
+    </p>
+
+    {% if error %}
+        <div class="error-box">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+
+        <label>E-Mail</label>
+        <input type="email" name="email" required>
+
+        <label>Passwort</label>
+        <input type="password" name="password" required>
+
+        <button class="primary-btn full-btn">
+            Anmelden
+        </button>
+
+    </form>
+
+    <div class="auth-links">
+        Noch kein Konto?
+        <a href="/register">Jetzt registrieren</a>
+    </div>
+
+    <a href="/" class="back-link">
+        ← Zur Website
+    </a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="admin-page">
+
+<header class="admin-header">
+
+    <div>
+        <strong>CentexRantsAndGaming</strong>
+        <span>Admin Dashboard</span>
+    </div>
+
+    <div class="admin-nav">
+        <a href="/">Website</a>
+        <a href="/admin/logout">Abmelden</a>
+    </div>
+
+</header>
+
+
+<main class="admin-container">
+
+    <div class="admin-title">
+
+        <div>
+            <span class="section-label">VERWALTUNG</span>
+            <h1>Dashboard</h1>
+        </div>
+
+    </div>
+
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <span>Registrierte Nutzer</span>
+            <strong>{{ user_count }}</strong>
+            <small>Konten insgesamt</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Videos</span>
+            <strong>{{ data.videos|length }}</strong>
+            <small>Videos auf der Website</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Merch</span>
+            <strong>{{ data.merch|length }}</strong>
+            <small>Artikel im Shop</small>
+        </div>
+
+    </section>
+
+
+    <section class="admin-card">
+
+        <div class="card-heading">
+            <div>
+                <span class="section-label">WEBSITE</span>
+                <h2>Seiteneinstellungen</h2>
+            </div>
+        </div>
+
+        <form method="POST" action="/admin/settings">
+
+            <label>Website-Titel</label>
+            <input
+                type="text"
+                name="site_title"
+                value="{{ data.site_title }}"
+            >
+
+            <label>Beschreibung</label>
+            <input
+                type="text"
+                name="site_description"
+                value="{{ data.site_description }}"
+            >
+
+            <button class="primary-btn">
+                Änderungen speichern
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <section class="admin-card">
+
+        <div class="card-heading">
+            <div>
+                <span class="section-label">CONTENT</span>
+                <h2>Video hinzufügen</h2>
+            </div>
+        </div>
+
+        <form method="POST" action="/admin/video/add">
+
+            <input
+                name="title"
+                placeholder="Video-Titel"
+                required
+            >
+
+            <input
+                name="url"
+                placeholder="YouTube-Link"
+            >
+
+            <textarea
+                name="description"
+                placeholder="Beschreibung"
+            ></textarea>
+
+            <button class="primary-btn">
+                + Video hinzufügen
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <section class="admin-card">
+
+        <div class="card-heading">
+            <div>
+                <span class="section-label">CONTENT</span>
+                <h2>Videos verwalten</h2>
+            </div>
+        </div>
+
+        {% if data.videos %}
+
+            {% for video in data.videos %}
+
+            <form
+                method="POST"
+                action="/admin/video/edit/{{ loop.index0 }}"
+                class="edit-item"
+            >
+
+                <input
+                    name="title"
+                    value="{{ video.title }}"
+                >
+
+                <input
+                    name="url"
+                    value="{{ video.url }}"
+                >
+
+                <textarea name="description">{{ video.description }}</textarea>
+
+                <div class="form-buttons">
+
+                    <button class="primary-btn">
+                        Speichern
+                    </button>
+
+                    <button
+                        class="danger-btn"
+                        formaction="/admin/video/delete/{{ loop.index0 }}"
+                    >
+                        Löschen
+                    </button>
+
+                </div>
+
+            </form>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="muted">
+                Noch keine Videos vorhanden.
+            </p>
+
+        {% endif %}
+
+    </section>
+
+
+    <section class="admin-card">
+
+        <div class="card-heading">
+            <div>
+                <span class="section-label">SHOP</span>
+                <h2>Merch hinzufügen</h2>
+            </div>
+        </div>
+
+        <form method="POST" action="/admin/merch/add">
+
+            <input
+                name="name"
+                placeholder="Produktname"
+                required
+            >
+
+            <input
+                name="price"
+                placeholder="Preis"
+            >
+
+            <textarea
+                name="description"
+                placeholder="Beschreibung"
+            ></textarea>
+
+            <button class="primary-btn">
+                + Merch hinzufügen
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <section class="admin-card">
+
+        <div class="card-heading">
+            <div>
+                <span class="section-label">SHOP</span>
+                <h2>Merch verwalten</h2>
+            </div>
+        </div>
+
+        {% if data.merch %}
+
+            {% for item in data.merch %}
+
+            <form
+                method="POST"
+                action="/admin/merch/edit/{{ loop.index0 }}"
+                class="edit-item"
+            >
+
+                <input
+                    name="name"
+                    value="{{ item.name }}"
+                >
+
+                <input
+                    name="price"
+                    value="{{ item.price }}"
+                >
+
+                <textarea name="description">{{ item.description }}</textarea>
+
+                <div class="form-buttons">
+
+                    <button class="primary-btn">
+                        Speichern
+                    </button>
+
+                    <button
+                        class="danger-btn"
+                        formaction="/admin/merch/delete/{{ loop.index0 }}"
+                    >
+                        Löschen
+                    </button>
+
+                </div>
+
+            </form>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p class="muted">
+                Noch kein Merch vorhanden.
+            </p>
+
+        {% endif %}
+
+    </section>
+
+</main>
+
+</body>
+</html>

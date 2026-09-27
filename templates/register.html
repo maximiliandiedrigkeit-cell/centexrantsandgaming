@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrieren</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="auth-page">
+
+<div class="auth-box">
+
+    <div class="brand-icon">C</div>
+
+    <h1>Konto erstellen</h1>
+
+    <p>
+        Erstelle dein kostenloses Konto.
+    </p>
+
+    {% if error %}
+        <div class="error-box">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+
+        <label>E-Mail</label>
+        <input type="email" name="email" required>
+
+        <label>Passwort</label>
+        <input type="password" name="password" minlength="8" required>
+
+        <label>Passwort wiederholen</label>
+        <input type="password" name="password2" minlength="8" required>
+
+        <button class="primary-btn full-btn">
+            Konto erstellen
+        </button>
+
+    </form>
+
+    <div class="auth-links">
+        Bereits registriert?
+        <a href="/login">Anmelden</a>
+    </div>
+
+    <a href="/" class="back-link">
+        ← Zur Website
+    </a>
+
+</div>
+
+</body>
+</html>

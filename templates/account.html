@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Konto</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="auth-page">
+
+<div class="auth-box">
+
+    <div class="brand-icon">C</div>
+
+    <h1>Mein Konto</h1>
+
+    <p>Du bist angemeldet als:</p>
+
+    <div class="account-email">
+        {{ user_email }}
+    </div>
+
+    <a href="/" class="primary-btn button-link">
+        Zur Website
+    </a>
+
+    <a href="/logout" class="secondary-btn button-link">
+        Abmelden
+    </a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CentexRantsAndGaming</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="/" class="brand">
+        <div class="brand-icon">C</div>
+
+        <div class="brand-text">
+            <strong>CentexRantsAndGaming</strong>
+            <span>Gaming • Rants • More</span>
+        </div>
+    </a>
+
+    <nav>
+        <a href="/" class="active">Home</a>
+        <a href="#videos">Videos</a>
+        <a href="#about">Über mich</a>
+        <a href="/merch">Merch</a>
+        <a href="/login">Anmelden</a>
+        <a href="/admin/login" class="admin-link">Admin</a>
+    </nav>
+
+    <a href="https://www.youtube.com/@Centexrantsandgaming" class="youtube-btn">YouTube</a>
+
+</header>
+
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            CENTEXRANTSANDGAMING
+        </div>
+
+        <h1>
+            Gaming.<br>
+            Rants.<br>
+            Entertainment.
+        </h1>
+
+        <p>
+            Willkommen auf der offiziellen Website von
+            CentexRantsAndGaming.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="https://www.youtube.com/@Centexrantsandgaming" class="primary-btn">YouTube ansehen</a>
+            <a href="#videos" class="secondary-btn">Videos ansehen</a>
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="hero-logo">
+            C
+        </div>
+
+        <div class="hero-card-title">
+            Centex
+        </div>
+
+        <div class="hero-card-subtitle">
+            Rants & Gaming
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="videos" class="section">
+
+    <div class="section-heading">
+        <div>
+            <span class="section-label">CONTENT</span>
+            <h2>Neueste Videos</h2>
+        </div>
+
+        <a href="#" class="small-link">Alle Videos →</a>
+    </div>
+
+
+    <div class="video-grid">
+
+        {% if data.videos %}
+
+            {% for video in data.videos %}
+
+            <a href="{{ video.url or '#' }}" class="video-card">
+
+                <div class="video-image">
+                    <span>▶</span>
+                </div>
+
+                <div class="video-info">
+                    <h3>{{ video.title }}</h3>
+                    <p>{{ video.description }}</p>
+                </div>
+
+            </a>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="video-card">
+                <div class="video-image">
+                    <span>▶</span>
+                </div>
+
+                <div class="video-info">
+                    <h3>Neues Video kommt bald</h3>
+                    <p>Hier werden später die neuesten Videos angezeigt.</p>
+                </div>
+            </div>
+
+
+            <div class="video-card">
+                <div class="video-image">
+                    <span>▶</span>
+                </div>
+
+                <div class="video-info">
+                    <h3>Gaming Content</h3>
+                    <p>Gaming, Rants und mehr.</p>
+                </div>
+            </div>
+
+
+            <div class="video-card">
+                <div class="video-image">
+                    <span>▶</span>
+                </div>
+
+                <div class="video-info">
+                    <h3>Coming Soon</h3>
+                    <p>Weitere Videos folgen.</p>
+                </div>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<section id="about" class="about-section">
+
+    <div>
+
+        <span class="section-label">ÜBER MICH</span>
+
+        <h2>Gaming ohne Filter.</h2>
+
+        <p>
+            Hier findest du Gaming-Videos, Rants, Meinungen
+            und jede Menge Entertainment.
+        </p>
+
+        <a href="https://www.youtube.com/@Centexrantsandgaming" class="primary-btn">
+            Mehr erfahren
+        </a>
+
+    </div>
+
+    <div class="about-box">
+
+        <div class="about-icon">C</div>
+
+        <h3>CentexRantsAndGaming</h3>
+
+        <p>
+            Gaming • Rants • Entertainment
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="merch-preview">
+
+    <div>
+
+        <span class="section-label">SHOP</span>
+
+        <h2>Merch kommt bald.</h2>
+
+        <p>
+            Eigene Kleidung und weitere Produkte
+            werden später hier verfügbar sein.
+        </p>
+
+    </div>
+
+    <a href="/merch" class="secondary-btn">
+        Zum Merch →
+    </a>
+
+</section>
+
+
+<section class="social-section">
+
+    <span class="section-label">SOCIAL</span>
+
+    <h2>Folge Centex</h2>
+
+    <div class="social-buttons">
+
+        <a href="#" class="social-btn">
+            YouTube
+        </a>
+
+        <a href="#" class="social-btn">
+            TikTok
+        </a>
+
+        <a href="#" class="social-btn">
+        
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>CentexRantsAndGaming</strong>
+        <span>Gaming • Rants • More</span>
+    </div>
+
+    <p>
+        © 2026 CentexRantsAndGaming
+    </p>
+
+</footer>
+
+</body>
+</html>

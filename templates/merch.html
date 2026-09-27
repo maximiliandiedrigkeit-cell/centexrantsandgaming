@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merch – CentexRantsAndGaming</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="/" class="brand">
+        <div class="brand-icon">C</div>
+
+        <div class="brand-text">
+            <strong>CentexRantsAndGaming</strong>
+            <span>Gaming • Rants • More</span>
+        </div>
+    </a>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/#videos">Videos</a>
+        <a href="/#about">Über mich</a>
+        <a href="/merch" class="active">Merch</a>
+        <a href="/login">Anmelden</a>
+        <a href="/admin/login" class="admin-link">Admin</a>
+    </nav>
+
+</header>
+
+
+<main class="merch-page">
+
+    <span class="section-label">SHOP</span>
+
+    <h1>Merch</h1>
+
+    <p class="page-intro">
+        Der offizielle CentexRantsAndGaming-Merch kommt bald.
+    </p>
+
+
+    <div class="merch-grid">
+
+        {% if data.merch %}
+
+            {% for item in data.merch %}
+
+            <div class="merch-card">
+
+                <div class="merch-image">
+                    C
+                </div>
+
+                <h2>{{ item.name }}</h2>
+
+                <p>{{ item.description }}</p>
+
+                <strong>{{ item.price }}</strong>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="merch-card">
+                <div class="merch-image">C</div>
+                <h2>T-Shirt</h2>
+                <p>Offizielles CentexRantsAndGaming T-Shirt.</p>
+                <strong>Coming Soon</strong>
+            </div>
+
+            <div class="merch-card">
+                <div class="merch-image">C</div>
+                <h2>Hoodie</h2>
+                <p>Offizieller Gaming-Hoodie.</p>
+                <strong>Coming Soon</strong>
+            </div>
+
+            <div class="merch-card">
+                <div class="merch-image">C</div>
+                <h2>Cap</h2>
+                <p>CentexRantsAndGaming Cap.</p>
+                <strong>Coming Soon</strong>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <a href="/" class="secondary-btn">
+        ← Zurück zur Startseite
+    </a>
+
+</main>
+
+</body>
+</html>
